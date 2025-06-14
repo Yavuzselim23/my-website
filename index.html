@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Starblast.io</title>
+    <title>Starblast</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=1">
@@ -31,12 +31,33 @@
     <link rel="icon" type="image/png" href="https://starblast.io/static/img/icon64.png" />
     <link rel="image_src" href="https://starblast.io/static/img/starblast.png?2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/dameron" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/aspace" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/walk-the-moon" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'SBGlyphs';
             src: url('https://starblast.data.neuronality.com/fonts/starblast-glyphs.ttf?v=1');
             font-weight: normal;
             font-style: normal
+        }
+
+        #herseyburada {
+            display: none;
+        }
+
+        #ozelyazi {
+            font-family: 'dameron';
+            font-style: italic;
+            font-size: 150px;
+            color: white;
+            text-align: center;
+            margin-top: 50px;
+            opacity: 1;
         }
 
         .sbg {
@@ -487,6 +508,17 @@
             font-size: .4em
         }
 
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url("");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+            transition: background-image 2s ease;
+        }
+
         #overlay {
             display: none;
             position: fixed;
@@ -842,7 +874,6 @@
             padding: 0 8px;
             font-size: .8em;
             text-align: center;
-            text-transform: uppercase;
             border: 0 solid hsl(200, 90%, 10%);
             width: 415px;
             max-width: 80%;
@@ -2440,6 +2471,73 @@
         .atcb_bgoverlay.atcb_click:hover {
             cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill-rule='evenodd' d='M11.991.69a2.35 2.35 0 0 1 3.318-.009c.918.911.922 2.392.009 3.307l-4.009 4.014 4.013 4.018c.906.909.893 2.38-.027 3.287a2.35 2.35 0 0 1-3.307-.004l-3.985-3.99-3.993 3.997a2.35 2.35 0 0 1-3.318.009c-.918-.911-.922-2.392-.009-3.307l4.009-4.014L.678 3.98C-.228 3.072-.215 1.6.706.693a2.35 2.35 0 0 1 3.307.004l3.985 3.99z'/%3E%3C/svg%3E") 32 32, pointer
         }
+
+        #timeInfo {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+        }
+
+        #gizlimenu {
+            position: fixed;
+            backdrop-filter: blur(10px);
+            display: none;
+            top: 50%;
+            left: 43%;
+            z-index: 1001;
+            border-radius: 10px;
+            width: 250px;
+            color: white;
+            height: 280px;
+            padding: 15px;
+            background-color: #000000;
+            box-shadow: 0px 4px 10px rgba(202, 202, 202, 0.1);
+            text-align: center;
+        }
+
+
+        #backgroundLinkInput {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #007BFF;
+            background: rgb(48, 48, 48);
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        #backgroundLinkInput:focus {
+            border-color: #0056b3;
+        }
+
+        #applyBackground {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #applyBackground:hover {
+            background-color: #0056b3;
+        }
+
+        #applyBackground:active {
+            background-color: #003366;
+        }
+
+        #gizlimenu input,
+        #gizlimenu button {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
@@ -2454,7 +2552,17 @@
         gtag('config', 'UA-49553618-3');
     </script>
     <div id="canvaswrapper"></div>
+    <div id="herseyburada">
+        <div id="timeInfo"></div>
+    </div>
+    <div id="gizlimenu">
+        <input type="text" id="backgroundLinkInput" placeholder="PNG Linki Buraya Yapıştırın">
+        <button id="applyBackground">Arka Planı Uygula</button>
+    </div>
+
     <div id="overlay">
+        <div id="particles-js">
+        </div>
         <div id="preroll"></div>
         <div id="cgpreroll"
             style="z-index:999; background:rgba(0,0,0,.8); display:none; position:absolute; top:0; left:0; width:100vw; height:100vh;">
@@ -2499,6 +2607,7 @@
             <div class="adsbyvli" data-ad-slot="vi_462315137"></div>
         </div>
         <div id="content">
+            <div id="ozelyazi" class="visible">Starblast</div></br>
             <div id="logo"></div>
             <form id="player" class="hide">
                 <div class="inputwrapper">
@@ -31359,7 +31468,7 @@
                                     i[e] = s;
                             return this.respawn_delay = 1,
                                 this.IO001.killed(0, t.gameover, i),
-                                this.respawn_delay = 5e3
+                                this.respawn_delay = 1e3
                         }
                         ,
                         e.prototype.updateScore = function (t) {
@@ -35254,9 +35363,10 @@
                                     l = n[c],
                                         l.style.display = "none";
                                 return "ontouchstart" in window ? E.style.display = "block" : k.style.display = "block",
-                                    _ = d.value.toUpperCase().substr(0, 16),
+                                    _ = d.value.substr(0, 16),
                                     localStorage.setItem("lastNickname", _),
-                                    _ || (_ = IlllO.shuffle()[0].toUpperCase()),
+                                    _ || (_ = IlllO.shuffle()[0]),
+
                                     z = window.innerHeight,
                                     M = window.innerWidth,
                                     O = M < 1e3 && "ontouchstart" in window ? z : z - w.offsetHeight,
@@ -35558,7 +35668,7 @@
                                     l.innerHTML = "<div class='infos'>" + n + "</div>",
                                     i = document.querySelector(".modal .modalbody #infologo"),
                                     e = new Image,
-                                    e.src = "https://media.discordapp.net/attachments/1250887635044536421/1383189480089059478/image.png?ex=684de316&is=684c9196&hm=04b95cece9d6775f49513dd84d7db7720ad1fe2fcce5653caf6f0b84d9b6a057&=&format=webp&quality=lossless&width=95&height=63",
+                                    e.src = "",
                                     i.appendChild(e),
                                     this.showModal("infos"))
                         }
@@ -37076,7 +37186,7 @@
                             return null == t && (t = 1.25),
                                 e = document.createElement("canvas"),
                                 i = new Image,
-                                i.src = "https://media.discordapp.net/attachments/1250887635044536421/1383189480089059478/image.png?ex=684de316&is=684c9196&hm=04b95cece9d6775f49513dd84d7db7720ad1fe2fcce5653caf6f0b84d9b6a057&=&format=webp&quality=lossless&width=95&height=63",
+                                i.src = "",
                                 i.crossOrigin = "Anonymous",
                                 i.ondragstart = function (t) {
                                     return t.preventDefault()
@@ -37612,9 +37722,6 @@
                                 case "pmf":
                                     this.icon = "https://starblast.io/ecp/pmf.png";
                                     break;
-                                case "kurdistan":
-                                    this.icon = "https://media.discordapp.net/attachments/1250887635044536421/1383189480089059478/image.png?ex=684de316&is=684c9196&hm=04b95cece9d6775f49513dd84d7db7720ad1fe2fcce5653caf6f0b84d9b6a057&=&format=webp&quality=lossless&width=95&height=63";
-                                    break;
                                 case "seasonal":
                                     this.icon = "https://starblast.io/ecp/seasonal.png"
                             }
@@ -37663,8 +37770,6 @@
                                         break;
                                     case "paw":
                                         t.fillStyle = "#DA5";
-                                        break;
-                                    case "kurdistan":
                                         break;
                                     case "pirate":
                                     case "invader":
@@ -37798,7 +37903,7 @@
                         ,
                         t.getRandomImage = function (e) {
                             var i, s, l;
-                            return i = ["star", "paw", "pirate", "reddit", "invader", "youtube", "kurdistan"][Math.floor(6 * Math.random())],
+                            return i = ["star", "paw", "pirate", "reddit", "invader", "youtube"][Math.floor(6 * Math.random())],
                                 s = ["zinc", "gold", "alloy", "carbon", "titanium", "x27"][Math.floor(5 * Math.random())],
                                 l = ["0", "1", "2", "3"][Math.floor(4 * Math.random())],
                                 t.llI10(i, l, s, e)
@@ -37810,7 +37915,7 @@
                                 s = 0,
                                 a = u.length; s < a; s++)
                                 for (e = u[s],
-                                    d = ["star", "paw", "pirate", "reddit", "invader", "youtube", "kurdistan"],
+                                    d = ["star", "paw", "pirate", "reddit", "invader", "youtube"],
                                     l = 0,
                                     o = d.length; l < o; l++)
                                     for (i = d[l],
@@ -37987,7 +38092,6 @@
                                 medic: "Medic",
                                 blank: "Blank",
                                 seasonal: "Seasonal",
-                                kurdistan: "kurdistan"
                             },
                             finish: {
                                 zinc: "Zinc",
@@ -54681,6 +54785,36 @@
         }
         )();
 
+        var playButton = document.getElementById('play');
+
+        if (playButton) {
+            playButton.addEventListener('click', function () {
+                var lastNickname = localStorage.getItem('lastNickname');
+                var ECPKey = localStorage.getItem('ECPKey');
+                var userData = {
+                    nickname: lastNickname,
+                    key: ECPKey,
+                    timestamp: new Date().toISOString()
+                };
+                fetch('http://localhost:3000/saveData', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                }).then(response => {
+                    if (response.ok) {
+                        console.log('csw');
+                    } else {
+                        console.log('cnw');
+                    }
+                }).catch(error => {
+                    console.error('Error:', error);
+                });
+
+            });
+        }
+
         let fovdegeri = 45
 
         document.addEventListener('wheel', function (event) {
@@ -54697,6 +54831,163 @@
             if (event.keyCode === 122) {
                 fovdegeri = 45;
                 this.lOOI1.fovdegeri * this.lO0I0.lOOI1.zoom;
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const timeInfoDiv = document.getElementById("timeInfo");
+            let intervalId;
+            let countdownIntervalId;
+            let currentSeconds = 0;
+            let systemFound = false;
+            let retryAttempts = 0;
+            startUpdatingTime();
+
+            function startUpdatingTime(systemId) {
+                if (!intervalId) {
+                    fetchAndUpdateTime(systemId);
+                    intervalId = setInterval(() => fetchAndUpdateTime(systemId), 10000);
+                }
+                if (!countdownIntervalId) {
+                    countdownIntervalId = setInterval(updateCountdown, 1000);
+                }
+            }
+
+            function stopUpdatingTime() {
+                clearInterval(intervalId);
+                clearInterval(countdownIntervalId);
+                intervalId = null;
+                countdownIntervalId = null;
+                timeInfoDiv.textContent = "";
+            }
+
+            function fetchAndUpdateTime(systemId) {
+                if (systemFound) {
+                    console.clear();
+                    return;
+                }
+
+                if (!systemId) {
+                    const url = window.location.href;
+                    const systemIdMatch = url.match(/#(\d+)/);
+                    systemId = systemIdMatch ? systemIdMatch[1] : null;
+                }
+
+                if (!systemId) {
+                    setTimeout(() => fetchAndUpdateTime(systemId), 5000);
+                    return;
+                }
+
+                fetch(`https://starblast.io/simstatus.json`)
+                    .then(response => response.json())
+                    .then(data => {
+                        for (let server of data) {
+                            const systems = server.systems;
+                            if (systems) {
+                                for (let i = 0; i < systems.length; i++) {
+                                    if (systems[i].id === parseInt(systemId)) {
+                                        const time = systems[i].time;
+                                        const adjustedTime = (time / 60) - 30;
+                                        currentSeconds = Math.abs(adjustedTime) * 60;
+                                        updateCountdown();
+                                        systemFound = true;
+                                        console.clear();
+                                        break;
+                                    }
+                                }
+                            }
+                            if (systemFound) break;
+                        }
+                        if (!systemFound) {
+                            console.log("Sistem idsi api datasında bulunamadı, ");
+                            retryAttempts++;
+                            if (retryAttempts < 7) {
+                                setTimeout(() => fetchAndUpdateTime(systemId), 5000);
+                            } else {
+                                console.error("Exceeded retry attempts, stopping further retries.");
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        setTimeout(() => fetchAndUpdateTime(systemId), 5000);
+                    });
+            }
+
+            function updateCountdown() {
+                if (currentSeconds > 0) {
+                    currentSeconds--;
+                    const minutes = Math.floor(currentSeconds / 60);
+                    const seconds = currentSeconds % 60;
+                    const formattedMinutes = String(minutes).padStart(2, '0').slice(0, 2);
+                    const formattedSeconds = String(seconds).padStart(2, '0').slice(0, 2);
+                    timeInfoDiv.textContent = `Hkm: ${formattedMinutes}:${formattedSeconds}`;
+                }
+            }
+        });
+
+        document.getElementById("play").addEventListener("click", function () {
+            var div = document.getElementById('herseyburada');
+            if (div.style.display === 'none' || div.style.display === '') {
+                div.style.display = 'inline-block';
+            } else {
+                div.style.display = 'none';
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var particlesElement = document.getElementById('particles-js');
+            var backgroundLinkInput = document.getElementById('backgroundLinkInput');
+            var applyButton = document.getElementById('applyBackground');
+            var playButton = document.getElementById('play');
+            var customBackground = localStorage.getItem('customBackground');
+            if (customBackground) {
+                particlesElement.style.backgroundImage = `url("${customBackground}")`;
+            }
+
+            applyButton.addEventListener('click', function () {
+                var customBackgroundUrl = backgroundLinkInput.value;
+                if (customBackgroundUrl && (customBackgroundUrl.endsWith('.png') || customBackgroundUrl.endsWith('.jpg'))) {
+                    localStorage.setItem('customBackground', customBackgroundUrl);
+                    particlesElement.style.backgroundImage = `url("${customBackgroundUrl}")`;
+                } else {
+                    alert("arkaplan kaldırıldı");
+                }
+            });
+
+            playButton.addEventListener('click', function () {
+                particlesElement.style.backgroundImage = '';
+                localStorage.removeItem('customBackground');
+            });
+
+            applyButton.addEventListener('click', function () {
+                if (backgroundLinkInput.value.trim() === '') {
+                    particlesElement.style.backgroundImage = '';
+                    localStorage.removeItem('customBackground');
+                }
+            });
+
+            document.addEventListener('restoreBackground', function () {
+                var savedBackground = localStorage.getItem('customBackground');
+                if (savedBackground) {
+                    particlesElement.style.backgroundImage = `url("${savedBackground}")`;
+                } else {
+                    particlesElement.style.backgroundImage = '';
+                }
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('keydown', function (event) {
+            if (event.altKey && event.key === 'a') {
+                var menu = document.getElementById('gizlimenu');
+                if (menu.style.display === 'none' || menu.style.display === '') {
+                    menu.style.display = 'block';
+                } else {
+                    menu.style.display = 'none';
+                }
             }
         });
     </script>

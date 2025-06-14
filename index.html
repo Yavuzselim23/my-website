@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>STARBLAST.IO</title>
+    <title>Starblast.io</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui=1">
     <meta charset="UTF-8">
-    <meta name="mobile-web-app-capable" content="yes">""
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="manifest" href="https://starblast.io/manifest.json">
     <meta name="description"
@@ -19518,6 +19518,9 @@
                                 case "alloy":
                                     this.buildAlloyMaterial();
                                     break;
+                                case "x27":
+                                    this.buildX27Material();
+                                    break;
                                 case "gold":
                                     this.buildGoldMaterial();
                                     break;
@@ -19553,10 +19556,10 @@
                                 map: IlIl0,
                                 bumpMap: IlIl0,
                                 specularMap: IlIl0,
-                                specular: 4243711,
+                                specular: 15793920,
                                 shininess: 30,
                                 bumpScale: .1,
-                                color: 5275808,
+                                color: 263175,
                                 emissive: O0OOI.hsvToRgbHex(this.hue, .5, 1),
                                 emissiveMap: O10O1
                             })
@@ -19567,7 +19570,7 @@
                                 map: IlIl0,
                                 bumpMap: IlIl0,
                                 specularMap: IlIl0,
-                                specular: 8413264,
+                                specular: 10531008,
                                 shininess: 30,
                                 bumpScale: .1,
                                 color: 10531008,
@@ -23538,6 +23541,9 @@
                                 case "titanium":
                                     this.buildTitaniumMaterial();
                                     break;
+                                case "x27":
+                                    this.buildX27Material();
+                                    break;
                                 case "carbon":
                                     this.buildCarbonMaterial();
                                     break;
@@ -23573,7 +23579,7 @@
                                 map: IlIl0,
                                 bumpMap: IlIl0,
                                 specularMap: IlIl0,
-                                specular: 8413264,
+                                specular: 10531008,
                                 shininess: 30,
                                 bumpScale: .1,
                                 color: 10531008,
@@ -23582,19 +23588,32 @@
                             })
                         }
                         ,
-                        t.prototype.buildTitaniumMaterial = function () {
+                        t.prototype.buildX27Material = function () {
                             return this.material = new THREE.MeshPhongMaterial({
                                 map: IlIl0,
                                 bumpMap: IlIl0,
                                 specularMap: IlIl0,
-                                specular: 6316128,
-                                shininess: 20,
+                                specular: 15793920,
+                                shininess: 30,
                                 bumpScale: .1,
-                                color: 6316128,
+                                color: 263175,
                                 emissive: O0OOI.hsvToRgbHex(this.hue, .5, 1),
                                 emissiveMap: O10O1
                             })
                         }
+                    t.prototype.buildTitaniumMaterial = function () {
+                        return this.material = new THREE.MeshPhongMaterial({
+                            map: IlIl0,
+                            bumpMap: IlIl0,
+                            specularMap: IlIl0,
+                            specular: 6316128,
+                            shininess: 20,
+                            bumpScale: .1,
+                            color: 6316128,
+                            emissive: O0OOI.hsvToRgbHex(this.hue, .5, 1),
+                            emissiveMap: O10O1
+                        })
+                    }
                         ,
                         t.prototype.buildCarbonMaterial = function () {
                             return this.material = new THREE.MeshPhongMaterial({
@@ -25638,7 +25657,7 @@
                             this.rotate_mines = !1,
                             this.radar_zoom = 2,
                             this.soundtrack = "procedurality.mp3",
-                            this.respawn_delay = 5e3,
+                            this.respawn_delay = 1e3,
                             this.Ol0II = !0,
                             this.anonymous_ships = !1,
                             this.spectate = !1,
@@ -25840,7 +25859,7 @@
                         this.IO001 = e,
                             i.lOlOl.constructor.call(this, "survival", "Survival Mode"),
                             this.max_enter_time = 1800,
-                            this.radar_zoom = 4,
+                            this.radar_zoom = 1,
                             this.max_enter_players = 50,
                             this.vocabulary = [{
                                 text: "Hello",
@@ -35539,7 +35558,7 @@
                                     l.innerHTML = "<div class='infos'>" + n + "</div>",
                                     i = document.querySelector(".modal .modalbody #infologo"),
                                     e = new Image,
-                                    e.src = "https://starblast.data.neuronality.com/img/starblast_io_logo.svg",
+                                    e.src = "https://media.discordapp.net/attachments/1250887635044536421/1383189480089059478/image.png?ex=684de316&is=684c9196&hm=04b95cece9d6775f49513dd84d7db7720ad1fe2fcce5653caf6f0b84d9b6a057&=&format=webp&quality=lossless&width=95&height=63",
                                     i.appendChild(e),
                                     this.showModal("infos"))
                         }
@@ -37057,7 +37076,7 @@
                             return null == t && (t = 1.25),
                                 e = document.createElement("canvas"),
                                 i = new Image,
-                                i.src = "https://starblast.data.neuronality.com/img/starblast_io_logo.svg?3",
+                                i.src = "https://media.discordapp.net/attachments/1250887635044536421/1383189480089059478/image.png?ex=684de316&is=684c9196&hm=04b95cece9d6775f49513dd84d7db7720ad1fe2fcce5653caf6f0b84d9b6a057&=&format=webp&quality=lossless&width=95&height=63",
                                 i.crossOrigin = "Anonymous",
                                 i.ondragstart = function (t) {
                                     return t.preventDefault()
@@ -37469,6 +37488,13 @@
                                         s.addColorStop(.5, "hsl(20,100%,30%)"),
                                         s.addColorStop(1, "hsl(40,100%,50%)");
                                     break;
+                                case "x27":
+                                    s = t.createLinearGradient(0, 0, 0, i),
+                                        s.addColorStop(0, "hsl(40,100%,50%)"),
+                                        s.addColorStop(.5, "hsl(40,100%,80%)"),
+                                        s.addColorStop(.5, "hsl(20,100%,30%)"),
+                                        s.addColorStop(1, "hsl(40,100%,50%)");
+                                    break;
                                 case "carbon":
                                     for (s = t.createLinearGradient(0, 0, 0, i),
                                         h = Math.min(10, this.size / 10),
@@ -37586,6 +37612,9 @@
                                 case "pmf":
                                     this.icon = "https://starblast.io/ecp/pmf.png";
                                     break;
+                                case "kurdistan":
+                                    this.icon = "https://media.discordapp.net/attachments/1250887635044536421/1383189480089059478/image.png?ex=684de316&is=684c9196&hm=04b95cece9d6775f49513dd84d7db7720ad1fe2fcce5653caf6f0b84d9b6a057&=&format=webp&quality=lossless&width=95&height=63";
+                                    break;
                                 case "seasonal":
                                     this.icon = "https://starblast.io/ecp/seasonal.png"
                             }
@@ -37634,6 +37663,8 @@
                                         break;
                                     case "paw":
                                         t.fillStyle = "#DA5";
+                                        break;
+                                    case "kurdistan":
                                         break;
                                     case "pirate":
                                     case "invader":
@@ -37767,19 +37798,19 @@
                         ,
                         t.getRandomImage = function (e) {
                             var i, s, l;
-                            return i = ["star", "paw", "pirate", "reddit", "invader", "youtube"][Math.floor(6 * Math.random())],
-                                s = ["zinc", "gold", "alloy", "carbon", "titanium"][Math.floor(5 * Math.random())],
+                            return i = ["star", "paw", "pirate", "reddit", "invader", "youtube", "kurdistan"][Math.floor(6 * Math.random())],
+                                s = ["zinc", "gold", "alloy", "carbon", "titanium", "x27"][Math.floor(5 * Math.random())],
                                 l = ["0", "1", "2", "3"][Math.floor(4 * Math.random())],
                                 t.llI10(i, l, s, e)
                         }
                         ,
                         t.test = function () {
                             var e, i, s, l, n, a, o, r, h, u, d, c;
-                            for (u = ["zinc", "gold", "alloy", "carbon", "titanium"],
+                            for (u = ["zinc", "gold", "alloy", "carbon", "titanium", "x27"],
                                 s = 0,
                                 a = u.length; s < a; s++)
                                 for (e = u[s],
-                                    d = ["star", "paw", "pirate", "reddit", "invader", "youtube"],
+                                    d = ["star", "paw", "pirate", "reddit", "invader", "youtube", "kurdistan"],
                                     l = 0,
                                     o = d.length; l < o; l++)
                                     for (i = d[l],
@@ -37955,14 +37986,16 @@
                                 discord: "Discord",
                                 medic: "Medic",
                                 blank: "Blank",
-                                seasonal: "Seasonal"
+                                seasonal: "Seasonal",
+                                kurdistan: "kurdistan"
                             },
                             finish: {
                                 zinc: "Zinc",
                                 alloy: "Alloy",
                                 gold: "Gold",
                                 titanium: "Titanium",
-                                carbon: "Carbon"
+                                carbon: "Carbon",
+                                x27: "X27"
                             },
                             laser: {
                                 0: "Single",
@@ -54648,7 +54681,7 @@
         }
         )();
 
-        let fovdegeri = 45;
+        let fovdegeri = 45
 
         document.addEventListener('wheel', function (event) {
             if (event.deltaY < 0) {
@@ -54663,10 +54696,9 @@
         document.addEventListener('keydown', function (event) {
             if (event.keyCode === 122) {
                 fovdegeri = 45;
-                this.lOOI1.fov = fovdegeri * this.lO0I0.lOOI1.zoom;
+                this.lOOI1.fovdegeri * this.lO0I0.lOOI1.zoom;
             }
         });
-
     </script>
 </body>
 

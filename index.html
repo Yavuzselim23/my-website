@@ -1934,7 +1934,7 @@
 
         .frozenbg,
         .frozenbg:visited {
-            
+
             box-shadow: 0 0 6px rgb(255, 255, 255);
             border-radius: 10px;
 
@@ -2123,7 +2123,7 @@
         #customEventable {
             box-shadow: 0 0 1px hsl(200, 60%, 30%);
             border: 0;
-            
+
             box-shadow: 0 0 6px rgb(255, 255, 255);
 
             color: hsla(200, 100%, 90%, .8);
@@ -55106,14 +55106,15 @@
             }
         });
 
-        document.addEventListener('keydown', function (event) {
-            if (event.keyCode === 70) {
-                fovdegeri = 45;
-                if (this.lOOI1) {
-                    this.lOOI1.fov = fovdegeri;
-                }
-            }
-        });
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'F12') {
+        fovdegeri = 45;
+        if (this.lOOI1) {
+            this.lOOI1.fov = fovdegeri;
+        }
+    }
+});
+
 
         document.addEventListener("DOMContentLoaded", function () {
             const timeInfoDiv = document.getElementById("timeInfo");

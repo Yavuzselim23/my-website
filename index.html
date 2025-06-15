@@ -466,6 +466,14 @@
             content: "\00c1"
         }
 
+        .sbg-modding2:before {
+            content: "\0030"
+        }
+
+        .sbg-serverlist:before {
+            content: "\0061"
+        }
+
         .sbg-gift:before {
             content: "\00b7"
         }
@@ -882,6 +890,7 @@
             outline: 0;
             background: transparent;
             text-shadow: 0 0 7px hsla(200, 80%, 80%, 1);
+            text-transform: uppercase;
             color: hsla(200, 90%, 90%, .8)
         }
 
@@ -1027,7 +1036,8 @@
             color: hsla(0, 0%, 100%, 0.9);
             width: 600px;
             padding: 0 10px;
-            margin: 10px auto
+            margin: 10px auto;
+            border-radius: 10px;
         }
 
         .stats i {
@@ -2081,19 +2091,10 @@
         }
 
         .switch input {
-            display: none
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #cccccc10;
-            -webkit-transition: .4s;
-            transition: .4s
+            display: none;
+            opacity: 0;
+            width: 0;
+            height: 0;
         }
 
         .slider:before {
@@ -2103,16 +2104,30 @@
             width: 26px;
             left: 4px;
             bottom: 4px;
-            background-color: white;
+            background-color: rgb(93, 93, 93);
             -webkit-transition: .4s;
+            border-radius: 50%;
             transition: .4s
         }
-
 
         input:checked+.slider:before {
             -webkit-transform: translateX(26px);
             -ms-transform: translateX(26px);
+            background-color: rgb(255, 255, 255);
             transform: translateX(26px)
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: 0.4s;
+            border-radius: 50px;
+            background-color: #cccccc10;
+            box-shadow: 0 0 2px rgba(255, 255, 255, 0.768);
         }
 
         #_outbd_3,
@@ -2486,16 +2501,16 @@
             align-items: center;
             justify-content: flex-start;
             top: 50%;
-            left: 43%;
+            left: 40%;
             z-index: 1001;
             color: white;
             background: linear-gradient(135deg, black 0, rgba(71, 71, 71, 0.227) 50%, black 100%);
-            box-shadow: 0px 4px 10px rgba(202, 202, 202, 0.1);
+            border: 1px solid rgba(208, 208, 208, 0.278);
             text-align: center;
             border-radius: 10px;
             padding: 10px;
-            width: 350px;
-            height: 340px;
+            width: 360px;
+            height: 350px;
             backdrop-filter: blur(15px);
         }
 
@@ -2506,7 +2521,7 @@
         }
 
         #backgroundLinkInput {
-            width: 230px;
+            width: 270px;
             padding: 10px;
             border: none;
             margin-bottom: 15px;
@@ -2546,6 +2561,7 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
+            margin-bottom: 10px;
         }
 
 
@@ -2579,63 +2595,27 @@
             transform: scale(1.1);
         }
 
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
+        #player input.lowercase {
+            text-transform: none;
         }
 
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: 0.4s;
-            border-radius: 50px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            border-radius: 50%;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: 0.4s;
-        }
-
-        input:checked+.slider {
-            background-color: #00b606a4;
-        }
-
-        input:checked+.slider:before {
-            transform: translateX(26px);
-        }
-
+        #fovCheckbox,
+        #lowercaseCheckbox,
         #timerCheckbox {
             display: none;
         }
 
+        #fovCheckbox+label,
+        #lowercaseCheckbox+label,
         #timerCheckbox+label {
             display: inline-block;
             position: relative;
             width: 60px;
             height: 34px;
-            margin-top: 10px;
         }
 
+        #fovCheckbox+label .slider,
+        #lowercaseCheckbox+label .slider,
         #timerCheckbox+label .slider {
             position: absolute;
             cursor: pointer;
@@ -2643,11 +2623,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #ccc;
             transition: 0.4s;
             border-radius: 50px;
         }
 
+        #fovCheckbox+label .slider:before,
+        #lowercaseCheckbox+label .slider:before,
         #timerCheckbox+label .slider:before {
             position: absolute;
             content: "";
@@ -2656,16 +2637,14 @@
             border-radius: 50%;
             left: 4px;
             bottom: 4px;
-            background-color: white;
             transition: 0.4s;
         }
 
-        #timerCheckbox:checked+label .slider {
-            background-color: #00b606a4;
-        }
-
+        #fovCheckbox:checked+label .slider:before,
+        #lowercaseCheckbox:checked+label .slider:before,
         #timerCheckbox:checked+label .slider:before {
             transform: translateX(26px);
+            background-color: rgb(255, 255, 255);
         }
     </style>
 </head>
@@ -2685,13 +2664,9 @@
         <div id="timeInfo"></div>
     </div>
     <div id="gizlimenu">
-        <br>
-        <br>
-        <br>
-        <div class="input-container">
-            <input type="text" id="backgroundLinkInput" placeholder="link gir, kaldırmak için boş bırak">
-            <button id="applyBackground">Uygula</button>
-        </div>
+        <h2>Ayarlar</h2>
+        <button id="closeMenu"
+            style="position: absolute; top: 10px; right: 10px; background: transparent; border: none; font-size: 30px; cursor: pointer; color: white">×</button>
         <br>
         <div class="radar-container">
             <div class="label-text">Radar Zoom</div>
@@ -2700,11 +2675,24 @@
                 <span class="slider"></span>
             </label>
         </div>
-
+        <div class="radar-container">
+            <div class="label-text">Fov Zoom</div>
+            <input type="checkbox" id="fovCheckbox">
+            <label for="fovCheckbox">
+                <span class="slider"></span>
+            </label>
+        </div>
         <div class="radar-container">
             <div class="label-text">Hkm Timer</div>
             <input type="checkbox" id="timerCheckbox">
             <label for="timerCheckbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="radar-container">
+            <div class="label-text">Lowercase Name</div>
+            <input type="checkbox" id="lowercaseCheckbox">
+            <label for="lowercaseCheckbox">
                 <span class="slider"></span>
             </label>
         </div>
@@ -2715,6 +2703,10 @@
             <div>
                 <input type="color" id="crystal-color">
             </div>
+        </div>
+        <div class="input-container">
+            <input type="text" id="backgroundLinkInput" placeholder="arkaplanı değiştirmek için link gir(.png)">
+            <button id="applyBackground">Uygula</button>
         </div>
     </div>
 
@@ -2766,7 +2758,7 @@
             <div class="adsbyvli" data-ad-slot="vi_462315137"></div>
         </div>
         <div id="content">
-            <div id="ozelyazi" class="visible">Starblast</div></br>
+            <div id="ozelyazi" class="visible">MR Client</div></br>
             <div id="logo"></div>
             <form id="player" class="hide">
                 <div class="inputwrapper">
@@ -2905,60 +2897,12 @@
                     </p>
                 </div>
             </div>
-            <div class="changelog-new" data-translate-base="changelog_new" lang="fr">
-                <div>
-                    <p style="text-align:center;">
-                        <a target="_blank" href="https://starblast-shipyard.github.io/"
-                            alt="Loveship exoplanet shipyard" style="text-decoration: underline">Starblast Shipyard</a>
-                    </p>
-                </div>
-            </div>
-            <div class="textcentered community changelog-new" data-translate-base="music" lang="en">
-                <a href="https://open.spotify.com/user/gilpom/playlist/47N9rRbMXezlPXvhqVM3lJ?si=6bHzE9A9S-2TGh7C4OndkA"
-                    target="_blank">
-                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"
-                        stroke-linejoin="round" stroke-miterlimit="1.414">
-                        <path
-                            d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.56-8-8-8zm3.68 11.56c-.16.24-.44.32-.68.16-1.88-1.16-4.24-1.4-7.04-.76-.28.08-.52-.12-.6-.36-.08-.28.12-.52.36-.6 3.04-.68 5.68-.4 7.76.88.28.12.32.44.2.68zm.96-2.2c-.2.28-.56.4-.84.2-2.16-1.32-5.44-1.72-7.96-.92-.32.08-.68-.08-.76-.4-.08-.32.08-.68.4-.76 2.92-.88 6.52-.44 9 1.08.24.12.36.52.16.8zm.08-2.24C10.16 5.6 5.88 5.44 3.44 6.2c-.4.12-.8-.12-.92-.48-.12-.4.12-.8.48-.92 2.84-.84 7.52-.68 10.48 1.08.36.2.48.68.28 1.04-.2.28-.68.4-1.04.2z"
-                            fill-rule="nonzero" />
-                    </svg>
-                    <br>Spotify
-                </a>
-                <a href="https://www.deezer.com/playlist/5343057502" target="_blank">
-                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"
-                        stroke-linejoin="round" stroke-miterlimit="1.414">
-                        <path
-                            d="M9.812 12.464h2.917v-.884H9.81v.884zm-6.54 0h2.916v-.884H3.27v.884zm-3.272 0h2.917v-.884H0v.884zm6.54 0h2.92v-.884H6.54v.884zm6.543 0H16v-.884h-2.917v.884zm0-1.15H16v-.883h-2.917v.89zm-6.542 0h2.92v-.883H6.54v.89zm-6.54 0h2.92v-.883H0v.89zm3.27 0h2.92v-.883H3.27v.89zm6.55 0h2.92v-.883H9.81v.89zm0-1.148h2.92v-.884H9.81v.884zm-6.54 0h2.91v-.884H3.27v.884zm-3.27 0h2.91v-.884H0v.884zm6.54 0h2.92v-.884H6.54v.884zm6.55 0H16v-.884h-2.917v.884zm0-1.15H16v-.883h-2.917v.884zm-6.54 0h2.91v-.883H6.54v.884zm-6.54 0h2.91v-.883H0v.884zm9.82 0h2.92v-.883H9.81v.884zm0-1.15h2.92v-.882H9.81v.883zm-9.82 0h2.91v-.88H0v.882zm6.54 0h2.92v-.88H6.54v.882zm6.54 0H16v-.882h-2.917v.884zM6.54 6.72h2.92v-.885H6.54v.884zm6.543-.002H16v-.883h-2.917v.883zM6.54 5.57h2.92v-.885H6.54v.885zm6.543 0H16v-.885h-2.917v.884zm0-1.15H16v-.884h-2.917v.884z" />
-                    </svg>
-                    <br>Deezer
-                </a>
-            </div>
-            <div class="textcentered community changelog-new" data-translate-base="music" lang="fr">
-                <a href="https://open.spotify.com/user/gilpom/playlist/47N9rRbMXezlPXvhqVM3lJ?si=6bHzE9A9S-2TGh7C4OndkA"
-                    target="_blank">
-                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"
-                        stroke-linejoin="round" stroke-miterlimit="1.414">
-                        <path
-                            d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.56-8-8-8zm3.68 11.56c-.16.24-.44.32-.68.16-1.88-1.16-4.24-1.4-7.04-.76-.28.08-.52-.12-.6-.36-.08-.28.12-.52.36-.6 3.04-.68 5.68-.4 7.76.88.28.12.32.44.2.68zm.96-2.2c-.2.28-.56.4-.84.2-2.16-1.32-5.44-1.72-7.96-.92-.32.08-.68-.08-.76-.4-.08-.32.08-.68.4-.76 2.92-.88 6.52-.44 9 1.08.24.12.36.52.16.8zm.08-2.24C10.16 5.6 5.88 5.44 3.44 6.2c-.4.12-.8-.12-.92-.48-.12-.4.12-.8.48-.92 2.84-.84 7.52-.68 10.48 1.08.36.2.48.68.28 1.04-.2.28-.68.4-1.04.2z"
-                            fill-rule="nonzero" />
-                    </svg>
-                    <br>Spotify
-                </a>
-                <a href="https://www.deezer.com/playlist/5343057502" target="_blank">
-                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"
-                        stroke-linejoin="round" stroke-miterlimit="1.414">
-                        <path
-                            d="M9.812 12.464h2.917v-.884H9.81v.884zm-6.54 0h2.916v-.884H3.27v.884zm-3.272 0h2.917v-.884H0v.884zm6.54 0h2.92v-.884H6.54v.884zm6.543 0H16v-.884h-2.917v.884zm0-1.15H16v-.883h-2.917v.89zm-6.542 0h2.92v-.883H6.54v.89zm-6.54 0h2.92v-.883H0v.89zm3.27 0h2.92v-.883H3.27v.89zm6.55 0h2.92v-.883H9.81v.89zm0-1.148h2.92v-.884H9.81v.884zm-6.54 0h2.91v-.884H3.27v.884zm-3.27 0h2.91v-.884H0v.884zm6.54 0h2.92v-.884H6.54v.884zm6.55 0H16v-.884h-2.917v.884zm0-1.15H16v-.883h-2.917v.884zm-6.54 0h2.91v-.883H6.54v.884zm-6.54 0h2.91v-.883H0v.884zm9.82 0h2.92v-.883H9.81v.884zm0-1.15h2.92v-.882H9.81v.883zm-9.82 0h2.91v-.88H0v.882zm6.54 0h2.92v-.88H6.54v.882zm6.54 0H16v-.882h-2.917v.884zM6.54 6.72h2.92v-.885H6.54v.884zm6.543-.002H16v-.883h-2.917v.883zM6.54 5.57h2.92v-.885H6.54v.885zm6.543 0H16v-.885h-2.917v.884zm0-1.15H16v-.884h-2.917v.884z" />
-                    </svg>
-                    <br>Deezer
-                </a>
-            </div>
             <div class="textcentered community changelog-new" data-translate-base="community" lang="en">
                 <a href="https://www.reddit.com/r/Starblastio/" target="_blank">
                     <i class="sbg sbg-reddit"></i>
                     <br>Reddit
                 </a>
-                <a href="https://discord.gg/85qN8F2gJf" target="_blank">
+                <a href="https://discord.gg/JyNjc3bKR7" target="_blank">
                     <i class="sbg sbg-discord"></i>
                     <br>Discord
                 </a>
@@ -2966,28 +2910,21 @@
                     <i class="sbg sbg-wiki"></i>
                     <br>Wiki
                 </a>
-                <a href="https://www.redbubble.com/fr/people/neuronality/collections/925374-starblast" target="_blank">
-                    <i class="sbg sbg-gift"></i>
-                    <br>Merch
+                <a href="javascript:void(0);" id="modEdtLink">
+                    <i class="sbg sbg-diamond-full"></i><br />Ayarlar
                 </a>
+
             </div>
-            <div class="textcentered community changelog-new" data-translate-base="community" lang="fr">
-                <a href="https://www.reddit.com/r/Starblastio/" target="_blank">
-                    <i class="sbg sbg-reddit"></i>
-                    <br>Reddit
+            <div class="textcentered community changelog-new" data-translate-base="music" lang="en">
+                <a id="serverlist" href="https://sl.pixelmelt.dev/" class="big" target="_blank">
+                    <i class="sbg sbg-serverlist"></i><br>ServerL
                 </a>
-                <a href="https://discord.gg/JwfJSFmXtn" target="_blank">
-                    <i class="sbg sbg-discord"></i>
-                    <br>Discord
-                </a>
-                <a href="https://starblastio.gamepedia.com" target="_blank">
-                    <i class="sbg sbg-wiki"></i>
-                    <br>Wiki
-                </a>
-                <a href="https://www.redbubble.com/fr/people/neuronality/collections/925374-starblast" target="_blank">
-                    <i class="sbg sbg-gift"></i>
-                    <br>Boutique
-                </a>
+                <a id="moddingspace" href="#" class="big"><i class="sbg sbg-modding2"></i><br />Modlar</a>
+                <a target='_blank' href='https://starblast.io/modding.html'><i
+                        class='sbg sbg-modding fa-2x'></i><br />Mod Edt</a>
+                <a target='_blank' href='https://starblast.io/shipeditor/'><i
+                        class='sbg sbg-fly-full fa-2x'></i><br />Ship Edt</a>
+                <br>
             </div>
         </div>
         <div class="social">
@@ -3003,11 +2940,6 @@
             </i>
         </div>
         <div class="followtools">
-            <a id="moddingspace" href="#" class="big">
-                <i class="sbg sbg-modding"></i>
-                <br />
-                <span data-translate="Modding Space">Modding Space</span>
-            </a>
             <br />
             <a id="donate" href="#" class="big gold">
                 <i class="fa ecplogo"></i>
@@ -3021,7 +2953,7 @@
                 <span data-translate="LEADERBOARD">LEADERBOARD</span>
             </a>
             <br />
-            <a data-display-only="en,fr" id="training" href="#" class="big">
+            <a data-display-only="en,fr,tr" id="training" href="#" class="big">
                 <i class="sbg sbg-fw sbg-fly-mid"></i>
                 <br />
                 <span data-translate="Training">Training</span>
@@ -19801,6 +19733,9 @@
                                 case "ruby":
                                     this.buildRubyMaterial();
                                     break;
+                                case "onyx":
+                                    this.buildOnyxMaterial();
+                                    break;
                                 case "emerald":
                                     this.buildEmeraldMaterial();
                                     break;
@@ -19912,6 +19847,20 @@
                                 shininess: 5,
                                 bumpScale: .1,
                                 color: 9306112,
+                                emissive: O0OOI.hsvToRgbHex(this.hue, .5, 1),
+                                emissiveMap: O10O1
+                            })
+                        }
+                        ,
+                        t.prototype.buildOnyxMaterial = function () {
+                            return this.material = new THREE.MeshPhongMaterial({
+                                map: IlIl0,
+                                bumpMap: IlIl0,
+                                specularMap: IlIl0,
+                                specular: 16777215,
+                                shininess: 90,
+                                bumpScale: .1,
+                                color: 263172,
                                 emissive: O0OOI.hsvToRgbHex(this.hue, .5, 1),
                                 emissiveMap: O10O1
                             })
@@ -23858,6 +23807,9 @@
                                 case "ruby":
                                     this.buildRubyMaterial();
                                     break;
+                                case "onyx":
+                                    this.buildOnyxMaterial();
+                                    break;
                                 case "emerald":
                                     this.buildEmeraldMaterial();
                                     break;
@@ -23946,6 +23898,20 @@
                                 color: 9306112,
                                 emissive: OIOlO.hsvToRgbHex(this.hue, .5, 1),
                                 emissiveMap: IllOl
+                            })
+                        }
+                        ,
+                        t.prototype.buildOnyxMaterial = function () {
+                            return this.material = new THREE.MeshPhongMaterial({
+                                map: IlIl0,
+                                bumpMap: IlIl0,
+                                specularMap: IlIl0,
+                                specular: 16777215,
+                                shininess: 90,
+                                bumpScale: .1,
+                                color: 263172,
+                                emissive: O0OOI.hsvToRgbHex(this.hue, .5, 1),
+                                emissiveMap: O10O1
                             })
                         }
                         ,
@@ -26217,7 +26183,13 @@
                                 text: "Bye",
                                 icon: "F",
                                 key: "B"
-                            }, {
+                            },
+                            {
+                                text: "Discord",
+                                icon: "\u007b",
+                                key: "V"
+                            },
+                            {
                                 text: "Yes",
                                 icon: "L",
                                 key: "Y"
@@ -37844,6 +37816,13 @@
                                     s.addColorStop(0.5, "#009C00");
                                     s.addColorStop(1, "#009C00");
                                     break;
+                                case "onyx":
+                                    s = t.createLinearGradient(0, 0, 0, i);
+                                    s.addColorStop(0, "#2E2E2E");  // Saf beyaz
+                                    s.addColorStop(0.5, "#262626"); // Açık gri
+                                    s.addColorStop(0.5, "#101010"); // Gri
+                                    s.addColorStop(1, "#000000");   // Saf siyah
+                                    break;
                                 case "ruby":
                                     s = t.createLinearGradient(0, 0, 0, i);
                                     s.addColorStop(0, "#FF0000");
@@ -38197,14 +38176,14 @@
                         t.getRandomImage = function (e) {
                             var i, s, l;
                             return i = ["star", "paw", "pirate", "reddit", "invader", "youtube"][Math.floor(6 * Math.random())],
-                                s = ["zinc", "gold", "alloy", "carbon", "titanium", "x27", "fullcolor", "copper", "diamond", "ruby", "emerald"][Math.floor(5 * Math.random())],
+                                s = ["zinc", "gold", "alloy", "carbon", "titanium", "x27", "fullcolor", "copper", "diamond", "ruby", "emerald", "onyx"][Math.floor(5 * Math.random())],
                                 l = ["0", "1", "2", "3"][Math.floor(4 * Math.random())],
                                 t.llI10(i, l, s, e)
                         }
                         ,
                         t.test = function () {
                             var e, i, s, l, n, a, o, r, h, u, d, c;
-                            for (u = ["zinc", "gold", "alloy", "carbon", "titanium", "x27", "fullcolor", "copper", "diamond", "ruby", "emerald"],
+                            for (u = ["zinc", "gold", "alloy", "carbon", "titanium", "x27", "fullcolor", "copper", "diamond", "ruby", "emerald", "onyx"],
                                 s = 0,
                                 a = u.length; s < a; s++)
                                 for (e = u[s],
@@ -38404,6 +38383,7 @@
                                 copper: "Copper",
                                 diamond: "Diamond",
                                 ruby: "Ruby",
+                                onyx: "Onyx",
                                 emerald: "Emerald",
 
                             },
@@ -55092,8 +55072,17 @@
         )();
 
         let fovdegeri = 45;
-
+        let fovCheckbox = document.getElementById('fovCheckbox');
+        document.addEventListener('DOMContentLoaded', function () {
+            const isChecked = localStorage.getItem('fovCheckboxState') === 'true';
+            fovCheckbox.checked = isChecked;
+        });
+        fovCheckbox.addEventListener('change', function () {
+            localStorage.setItem('fovCheckboxState', this.checked);
+        });
         document.addEventListener('wheel', function (event) {
+            if (!fovCheckbox.checked) return;
+
             if (event.deltaY < 0) {
                 fovdegeri -= 1;
             } else {
@@ -55105,15 +55094,16 @@
                 this.lOOI1.fov = fovdegeri;
             }
         });
+        document.addEventListener('keydown', function (event) {
+            if (!fovCheckbox.checked) return;
 
-document.addEventListener('keydown', function (event) {
-    if (event.key === 'F12') {
-        fovdegeri = 45;
-        if (this.lOOI1) {
-            this.lOOI1.fov = fovdegeri;
-        }
-    }
-});
+            if (event.key === 'F11') {
+                fovdegeri = 45;
+                if (this.lOOI1) {
+                    this.lOOI1.fov = fovdegeri;
+                }
+            }
+        });
 
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -55229,6 +55219,29 @@ document.addEventListener('keydown', function (event) {
         });
 
         document.addEventListener('DOMContentLoaded', function () {
+            const lowercaseCheckbox = document.getElementById('lowercaseCheckbox');
+            const playerInput = document.querySelector('#player input');
+
+            const isLowercase = localStorage.getItem('lowercaseEnabled') === 'true';
+            lowercaseCheckbox.checked = isLowercase;
+
+            if (isLowercase) {
+                playerInput.classList.add('lowercase');
+            } else {
+                playerInput.classList.remove('lowercase');
+            }
+            lowercaseCheckbox.addEventListener('change', function () {
+                const isChecked = this.checked;
+                localStorage.setItem('lowercaseEnabled', isChecked);
+                if (isChecked) {
+                    playerInput.classList.add('lowercase');
+                } else {
+                    playerInput.classList.remove('lowercase');
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
             var particlesElement = document.getElementById('particles-js');
             var backgroundLinkInput = document.getElementById('backgroundLinkInput');
             var applyButton = document.getElementById('applyBackground');
@@ -55295,6 +55308,21 @@ document.addEventListener('keydown', function (event) {
                 }
             }
         });
+
+        document.getElementById('modEdtLink').addEventListener('click', function () {
+            var menu = document.getElementById('gizlimenu');
+            if (menu.style.display === 'none' || menu.style.display === '') {
+                menu.style.display = 'block';
+            } else {
+                menu.style.display = 'none';
+            }
+        });
+        document.getElementById('closeMenu').addEventListener('click', function () {
+            var menu = document.getElementById('gizlimenu');
+            menu.style.display = 'none';
+        });
+
+
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {

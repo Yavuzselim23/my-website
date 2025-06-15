@@ -2088,7 +2088,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #ccc;
+            background-color: #cccccc10;
             -webkit-transition: .4s;
             transition: .4s
         }
@@ -2105,13 +2105,6 @@
             transition: .4s
         }
 
-        input:checked+.slider {
-            background-color: hsl(200, 50%, 10%)
-        }
-
-        input:focus+.slider {
-            box-shadow: 0 0 1px hsl(200, 60%, 30%)
-        }
 
         input:checked+.slider:before {
             -webkit-transform: translateX(26px);
@@ -2481,57 +2474,62 @@
             left: 10px;
         }
 
+
         #gizlimenu {
             position: fixed;
-            backdrop-filter: blur(10px);
             display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
             top: 50%;
             left: 43%;
             z-index: 1001;
-            border-radius: 10px;
-            width: 250px;
             color: white;
-            height: 280px;
-            padding: 15px;
-            background-color: #000000;
+            background: linear-gradient(135deg, black 0, rgba(71, 71, 71, 0.227) 50%, black 100%);
             box-shadow: 0px 4px 10px rgba(202, 202, 202, 0.1);
             text-align: center;
+            border-radius: 10px;
+            padding: 10px;
+            width: 350px;
+            height: 340px;
+            backdrop-filter: blur(15px);
         }
 
+        #gizlimenu .input-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
 
         #backgroundLinkInput {
-            width: 80%;
+            width: 230px;
             padding: 10px;
+            border: none;
             margin-bottom: 15px;
-            border: 2px solid #007BFF;
             background: rgb(48, 48, 48);
             border-radius: 4px;
             font-size: 14px;
             outline: none;
             transition: border-color 0.3s ease;
-        }
-
-        #backgroundLinkInput:focus {
-            border-color: #0056b3;
+            margin-left: 0;
+            display: block;
+            margin-right: auto;
         }
 
         #applyBackground {
-            padding: 10px 20px;
-            background-color: #007BFF;
+            background: #8383833c;
             color: white;
+            box-shadow: 0px 4px 10px rgba(202, 202, 202, 0.1);
             border: none;
             border-radius: 4px;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            margin-left: auto;
+            display: block;
         }
 
         #applyBackground:hover {
-            background-color: #0056b3;
-        }
-
-        #applyBackground:active {
-            background-color: #003366;
+            transform: scale(1.05);
         }
 
         #gizlimenu input,
@@ -2539,31 +2537,87 @@
             margin-bottom: 10px;
         }
 
-        .radarcheckbox {
-            width: 25px;
-            height: 25px;
-            border: 2px solid #26ff00;
-            border-radius: 5px;
-            position: relative;
-            appearance: none;
-            transition: all 0.3s ease;
-        }
-
-        .radarcheckbox:checked {
-            background-color: #4dff00;
-            border-color: #4dff00;
-        }
-
-        label {
+        .radar-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            margin-top: 10px;
         }
 
-        label input {
-            margin-left: 10px;
+
+        .radar-container .label-text {
+            margin-right: 10px;
+        }
+
+        #crystal-color {
+            width: 146px;
+            height: 30px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            border: none;
+            background: transparent;
+            outline: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            vertical-align: middle;
+            text-align: left;
+            margin-left: auto;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        #crystal-color:hover {
+            transform: scale(1.1);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 50px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+        }
+
+        input:checked+.slider {
+            background-color: #00b606a4;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
         }
     </style>
 </head>
@@ -2583,14 +2637,31 @@
         <div id="timeInfo"></div>
     </div>
     <div id="gizlimenu">
-        <input type="text" id="backgroundLinkInput" placeholder="PNG Linki Buraya Yapıştırın">
-        <button id="applyBackground">Arka Planı Uygula</button>
         <br>
-        <label>
-            Radar Zoom
-            <input type="checkbox" class="radarcheckbox">
-        </label>
+        <br>
+        <br>
+        <div class="input-container">
+            <input type="text" id="backgroundLinkInput" placeholder="link gir, kaldırmak için boş bırak">
+            <button id="applyBackground">Uygula</button>
+        </div>
+        <br>
+        <div class="radar-container">
+            <div class="label-text">Radar Zoom</div>
+            <label class="switch">
+                <input type="checkbox" class="s-slider">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+
+        <div class="container">
+            <label for="crystal-color" class="label">Crystal Color:</label>
+            <div>
+                <input type="color" id="crystal-color">
+            </div>
+        </div>
     </div>
+
 
     <div id="overlay">
         <div id="particles-js">
@@ -54816,35 +54887,31 @@
                 module.exports = translations;
         }
         )();
-        </script>
-<script>
 
-    let fovdegeri = 45;
+        let fovdegeri = 45;
 
-    document.addEventListener('wheel', function (event) {
-        if (event.deltaY < 0) {
-            fovdegeri -= 1;
-        } else {
-            fovdegeri += 1;
-        }
-        fovdegeri = Math.max(10, Math.min(fovdegeri, 120));
-
-        if (this.lOOI1) {
-            this.lOOI1.fov = fovdegeri;
-        }
-    });
-
-    document.addEventListener('keydown', function (event) {
-        if (event.keyCode === 70) { 
-            fovdegeri = 45;
-            if (this.lOOI1) {
-                this.lOOI1.fov = fovdegeri; 
+        document.addEventListener('wheel', function (event) {
+            if (event.deltaY < 0) {
+                fovdegeri -= 1;
+            } else {
+                fovdegeri += 1;
             }
-        }
-    });
+            fovdegeri = Math.max(10, Math.min(fovdegeri, 120));
 
-</script>
-<script>
+            if (this.lOOI1) {
+                this.lOOI1.fov = fovdegeri;
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.keyCode === 70) {
+                fovdegeri = 45;
+                if (this.lOOI1) {
+                    this.lOOI1.fov = fovdegeri;
+                }
+            }
+        });
+
         document.addEventListener("DOMContentLoaded", function () {
             const timeInfoDiv = document.getElementById("timeInfo");
             let intervalId;
@@ -54945,8 +55012,7 @@
                 div.style.display = 'none';
             }
         });
-    </script>
-    <script>
+
         document.addEventListener('DOMContentLoaded', function () {
             var particlesElement = document.getElementById('particles-js');
             var backgroundLinkInput = document.getElementById('backgroundLinkInput');
@@ -54988,27 +55054,24 @@
                 }
             });
         });
-    </script>
-<script>
-    let radaryakinlastirmasi = localStorage.getItem('radar_yknlg') || 4;
 
-    window.onload = function() {
-        const isChecked = radaryakinlastirmasi == 1;
-        const checkbox = document.querySelector('.radarcheckbox');
-        checkbox.checked = isChecked;
-    }
+        let radaryakinlastirmasi = localStorage.getItem('radar_yknlg') || 4;
 
-    document.querySelector('.radarcheckbox').addEventListener('change', function() {
-        const isChecked = this.checked;
-        const newValue = isChecked ? 1 : 4;
-        
-        localStorage.setItem('radar_yknlg', newValue);
-        radaryakinlastirmasi = newValue;
-        location.reload();
-    });
-</script>
+        window.onload = function () {
+            const isChecked = radaryakinlastirmasi == 1;
+            const checkbox = document.querySelector('.s-slider');
+            checkbox.checked = isChecked;
+        }
 
-    <script>
+        document.querySelector('.s-slider').addEventListener('change', function () {
+            const isChecked = this.checked;
+            const newValue = isChecked ? 1 : 4;
+
+            localStorage.setItem('radar_yknlg', newValue);
+            radaryakinlastirmasi = newValue;
+            location.reload();
+        });
+
         document.addEventListener('keydown', function (event) {
             if (event.altKey && event.key === 'a') {
                 var menu = document.getElementById('gizlimenu');
@@ -55019,6 +55082,55 @@
                 }
             }
         });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function getCustomCrystalColor() {
+                return localStorage.getItem("crystal-color") || "";
+            }
+            const crystalInput = document.querySelector("#crystal-color");
+
+            crystalInput.value = getCustomCrystalColor();
+
+            crystalInput.addEventListener("change", function () {
+                localStorage.setItem("crystal-color", crystalInput.value);
+            });
+        });
+        let CrystalObject;
+        for (let i in window) try {
+            let val = window[i];
+            if ("function" == typeof val.prototype.createModel && val.prototype.createModel.toString().includes("Crystal")) {
+                CrystalObject = val;
+                break
+            }
+        }
+            catch (e) { }
+
+        let oldModel = CrystalObject.prototype.getModelInstance, getCustomCrystalColor = function () {
+            return localStorage.getItem("crystal-color") || ""
+        };
+
+        CrystalObject.prototype.getModelInstance = function () {
+            let res = oldModel.apply(this, arguments);
+            let color = getCustomCrystalColor();
+            if (color) this.material.color.set(color);
+            return res
+        };
+        if (!crystals) {
+            crystals = E("div");
+            crystals.setAttribute("class", "option");
+            t.appendChild(crystals);
+            let crytalInput = document.querySelector("#crystal-color");
+            crytalInput.addEventListener("change", function (e) {
+                localStorage.setItem("crystal-color", crytalInput.value);
+                crytalInput.value = getCustomCrystalColor()
+            });
+            document.querySelector("#reset-crystals-color").addEventListener("click", function (e) {
+                localStorage.removeItem("crystal-color");
+                crytalInput.value = getCustomCrystalColor()
+            });
+            crytalInput.value = getCustomCrystalColor()
+        }
     </script>
 </body>
 
